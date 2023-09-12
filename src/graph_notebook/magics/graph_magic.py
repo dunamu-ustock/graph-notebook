@@ -1049,15 +1049,9 @@ class Graph(Magics):
                     ]
                     if args.hide_index:
                         gremlin_columndefs[1]["visible"] = False
-                    show(results_df,
-                         scrollX=True,
-                         scrollY=gremlin_scrollY,
-                         columnDefs=gremlin_columndefs,
-                         paging=gremlin_paging,
-                         scrollCollapse=gremlin_scrollCollapse,
-                         lengthMenu=[final_pagination_options, final_pagination_menu],
-                         pageLength=visible_results
-                         )
+
+                    custom_html = gremlin_table_template.render(results=query_res)
+                    display(HTML(custom_html))
                 else:  # Explain/Profile
                     display(HTML(first_tab_html))
 
