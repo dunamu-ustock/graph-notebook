@@ -1461,6 +1461,9 @@ class Graph(Magics):
                     ]
                     if args.hide_index:
                         gremlin_columndefs[1]["visible"] = False
+
+                    custom_html = gremlin_table_template.render(results=query_res)
+                    display(HTML(custom_html))
                     init_notebook_mode(connected=args.connected_table)
                     show(results_df,
                          connected=args.connected_table,
